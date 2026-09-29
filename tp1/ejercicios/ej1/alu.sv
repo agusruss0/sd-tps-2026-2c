@@ -67,9 +67,9 @@ module alu #(parameter int DATA_WIDTH = 32) (alu_if.alu alu_io);
         endcase
     end
     
-    assign es_cero = opcode_valido ? zero : ~zero; 
-    assign es_negativo = opcode_valido ? neg : ~neg; 
     // COMPLETAR: flags Z/N a partir de los detectores y C/V seleccionadas.
     // Respetar la excepción de opcode inválido (Z/N/C/V = 0100).
+    assign es_cero = opcode_valido ? zero : ~zero; 
+    assign es_negativo = opcode_valido ? neg : ~neg; 
     assign alu_io.flags = {es_cero,es_negativo,carry_resultado,overflow_resultado};
 endmodule
